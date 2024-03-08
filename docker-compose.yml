@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  coturn:
+    build: .
+    container_name: coturn
+    environment:
+      USERNAME: changeme # For example, only
+      PASSWORD: password # For example, only
+      REALM: realm # For example, only
+    volumes:
+      - /opt/cert.pem:/etc/ssl/turn_server_cert.pem
+      - /opt/key.pem:/etc/ssl/turn_server_pkey.pem
+    # ports:
+    #  - 3478:3478
+    #  - 3478:3478/udp
+    #  - 65435-65535:65435-65535/udp
+    network_mode: host # Expose directly on the host
